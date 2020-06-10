@@ -85,13 +85,14 @@ Hint: To drop an interest rate by 5% you can take monthlyRate and multiply it by
 */
 let creditScore = 800
 
-if (creditScore > 740){
-    console.log(mortgageCalculator(P, (monthlyInterestRate * 0.95), periods, name))
+ if (creditScore > 740){
+   console.log(mortgageCalculator(P, (monthlyInterestRate * 0.95), periods, name))
 }else if (creditScore<660){
-    console.log(mortgageCalculator(P, (monthlyInterestRate * 1.05), periods, name))
+   console.log(mortgageCalculator(P, (monthlyInterestRate * 1.05), periods, name))
 }else{
     console.log(mortgageCalculator(P, monthlyInterestRate, periods, name))
 }
+
 
 
 
@@ -112,7 +113,16 @@ For example, variableInterestRate(200000, 0.04, 30) should console.log:
 */
 
 
- 
+  function variableInterestRate(P, I, N) {
+    I -= 0.02;
+    for( let i = 0; i < 9; i ++){
+        let monthlyRate = Math.round(P * (((I/12) * Math.pow((1 + (I/12)), (N * 12))) / (Math.pow((1 + (I/12)), (N * 12)) - 1)) *100)/100
+        console.log(`${name}, with an interest rate of ${I.toFixed(3)}, your monthly rate is $${monthlyRate}`)
+        I+= 0.005
+    };
+}
+variableInterestRate(200000, 0.04, 30)
+
 
 
 // 🌟🌟🌟 STRETCH 🌟🌟🌟//
